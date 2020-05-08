@@ -18,6 +18,9 @@
 #import <JitsiMeet/JitsiMeetView.h>
 #import <JitsiMeet/JitsiMeetViewDelegate.h>
 #import <JitsiMeet/JitsiMeetConferenceOptions.h>
+#import <JitsiMeet/JitsiMeetLogger.h>
+#import <JitsiMeet/JitsiMeetBaseLogHandler.h>
+#import <JitsiMeet/InfoPlistUtil.h>
 
 
 @interface JitsiMeet : NSObject
@@ -35,14 +38,13 @@
  * List of domains used for universal linking.
  */
 @property (copy, nonatomic, nullable) NSArray<NSString *> *universalLinkDomains;
-
 /**
  * Default conference options used for all conferences. These options will be merged
  * with those passed to JitsiMeetView.join when joining a conference.
  */
 @property (nonatomic, nullable) JitsiMeetConferenceOptions *defaultConferenceOptions;
 
-#pragma mak - This class is a singleton
+#pragma mark - This class is a singleton
 
 + (instancetype _Nonnull)sharedInstance;
 
@@ -62,5 +64,7 @@
 #pragma mark - Utility methods
 
 - (JitsiMeetConferenceOptions *_Nonnull)getInitialConferenceOptions;
+
+- (BOOL)isCrashReportingDisabled;
 
 @end
